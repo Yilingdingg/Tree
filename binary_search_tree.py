@@ -14,7 +14,7 @@ def Insert(root_value, new_value):
     return root_value
 tree=None
 
-for i in range (5):
+for i in range (7):
     value=int(input("Enter values you want to add:"))
     tree=Insert(tree,value)
 
@@ -39,10 +39,6 @@ def In_t(root):
     if root.right!=None:
         In_t(root.right)
 
-Pre_t(tree)
-Post_t(tree)
-In_t(tree)
-
 def Search(root, value):
     if root.value<value and root.right!=None:
         return Search(root.right, value)
@@ -52,10 +48,6 @@ def Search(root, value):
         return True
     else:
         return False
-
-find_value=int(input("Search for a value:"))
-
-print(Search(tree, find_value ))
 
 def Successor(root):
     successor=root.right
@@ -80,5 +72,44 @@ def Delete(root, value):
         root.right=Delete(root.right, temp.value)
     return root
 
-delete_value=int(input("Which value to delete:"))
-print(Delete(tree,delete_value))
+#delete_value=int(input("Which value to delete:"))
+#print(Delete(tree,delete_value))
+
+while True:
+    print("\nTree Menu:")
+    print("1. Insert a value")
+    print("2. Preorder traversal")
+    print("3. Postorder traversal")
+    print("4. Inorder traversal")
+    print("5. Search for a value")
+    print("6. Delete a value")
+    print("7. Exit")
+    
+    choice=int(input("Enter your choice: "))
+    
+    if choice==1:
+        value=int(input("Enter value to insert:"))
+        tree=Insert(tree, value)
+    elif choice==2:
+        print("Preorder traversal:")
+        Pre_t(tree)
+        print()
+    elif choice==3:
+        print("Postorder traversal:")
+        Post_t(tree)
+        print()
+    elif choice==4:
+        print("Inorder traversal:")
+        In_t(tree)
+        print()
+    elif choice==5:
+        find_value=int(input("Search for a value:"))
+        print(Search(tree, find_value ))
+    elif choice==6:
+        delete_value=int(input("Which value to delete:"))
+        print(Delete(tree,delete_value))
+    elif choice==7:
+        print("Exit program.")
+        break
+    else:
+        print("Try again.")
